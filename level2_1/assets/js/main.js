@@ -10,8 +10,38 @@ let edelMetallPreise = [
   { name: "Osmium", preiseGramEuro: 11.54, veraenderung: "0.00%" },
 ];
 
-edelMetallPreise.forEach((metal) => {
-  console.log(metal.name);
-  console.log(metal.preiseGramEuro);
-  console.log(metal.veraenderung);
+const nameArr = [];
+console.log(nameArr);
+const priceArr = [];
+console.log(priceArr);
+const changeArr = [];
+console.log(changeArr);
+
+//- mit forEach()
+edelMetallPreise.forEach((elt) => nameArr.push(elt.name));
+edelMetallPreise.forEach((elt) => priceArr.push(elt.preiseGramEuro));
+edelMetallPreise.forEach((elt) => changeArr.push(elt.veraenderung));
+
+// - mit map()
+const nameArr2 = edelMetallPreise.map(function (elt) {
+  return elt.name;
 });
+console.log(nameArr2);
+
+const priceArr2 = edelMetallPreise.map(function (elt) {
+  return elt.preiseGramEuro;
+});
+console.log(priceArr2);
+
+const changeArr2 = edelMetallPreise.map(function (elt) {
+  return elt.veraenderung;
+});
+console.log(changeArr2);
+
+let tabelle =
+  "<table> <tr> <th>Name</th><th>PreiseGrammEuro</th> <th>Veränderungen</th> </tr>";
+for (let i = 0; i < edelMetallPreise.length; i++) {
+  tabelle += `<tr> <td>${nameArr[i]}</td> <td>${priceArr[i]}</td> <td>${changeArr[i]}</td> </tr>`;
+}
+
+document.body.innerHTML += tabelle + "</table>";
